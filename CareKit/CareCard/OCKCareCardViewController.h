@@ -232,6 +232,9 @@ OCK_CLASS_AVAILABLE
  */
 @property (nonatomic) BOOL isSorted;
 
+/**
+ An optional image to display on `OCKCareCardButtons`
+ */
 @property (nonatomic, nullable) UIImage *buttonImage;
 @end
 
