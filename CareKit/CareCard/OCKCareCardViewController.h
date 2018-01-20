@@ -232,6 +232,7 @@ OCK_CLASS_AVAILABLE
  */
 @property (nonatomic) BOOL isSorted;
 
+@property (nonatomic, nullable) UIImage *buttonImage;
 @end
 
 NS_ASSUME_NONNULL_END
