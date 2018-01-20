@@ -96,11 +96,14 @@ static const CGFloat ButtonViewSize = 40.0;
     
     _frequencyButtons = [NSArray new];
     NSMutableArray *buttons = [NSMutableArray new];
+    int index = 0;
     for (OCKCarePlanEvent *event in self.interventionEvents) {
         OCKCareCardButton *frequencyButton = [[OCKCareCardButton alloc] initWithFrame:CGRectZero];
         frequencyButton.tintColor = self.tintColor;
         frequencyButton.selected = (event.state == OCKCarePlanEventStateCompleted);
         frequencyButton.translatesAutoresizingMaskIntoConstraints = NO;
+        frequencyButton.selectedText = [self selectedButtonTextForActivity:event.activity][index];
+        frequencyButton.deselectedText = [self deselectedButtonTextForActivity:event.activity][index];
         frequencyButton.buttonImage = self.buttonImage;
         
         [frequencyButton addTarget:self
@@ -109,6 +112,7 @@ static const CGFloat ButtonViewSize = 40.0;
         [buttons addObject:frequencyButton];
         
         [self addSubview:frequencyButton];
+        index++;
     }
     _frequencyButtons = [buttons copy];
     
@@ -126,6 +130,16 @@ static const CGFloat ButtonViewSize = 40.0;
 - (void)updateView {
     _titleLabel.text = _intervention.title;
     _textLabel.text = _intervention.text;
+}
+
+- (NSArray<NSString*>*)selectedButtonTextForActivity:(OCKCarePlanActivity*) activity {
+    NSDictionary *info = activity.userInfo;
+    return [info objectForKey:@"selectedText"];
+}
+
+- (NSArray<NSString*>*)deselectedButtonTextForActivity:(OCKCarePlanActivity*) activity {
+    NSDictionary *info = activity.userInfo;
+    return [info objectForKey:@"deselectedText"];
 }
 
 - (void)setUpConstraints {

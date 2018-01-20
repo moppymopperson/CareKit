@@ -38,6 +38,7 @@ static const CGFloat ButtonSize = 30.0;
 @implementation OCKCareCardButton {
     CAShapeLayer *_circleLayer;
     UIImageView *_imageView;
+    UILabel *_label;
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -61,6 +62,16 @@ static const CGFloat ButtonSize = 30.0;
         _imageView.contentMode = UIViewContentModeScaleAspectFit;
         [self updateImageForSelection:self.isSelected];
         [self addSubview:_imageView];
+    }
+    
+    if (!_label) {
+        CGRect labelRect = CGRectMake(0, ButtonSize/2 + 8, ButtonSize, ButtonSize);
+        _label = [[UILabel alloc] initWithFrame:labelRect];
+        _label.font = [UIFont systemFontOfSize:9 weight:300];
+        _label.textColor = self.tintColor;
+        _label.textAlignment = NSTextAlignmentCenter;
+        [self updateTextForSelection:self.isSelected];
+        [self addSubview:_label];
     }
 }
 
@@ -96,6 +107,10 @@ static const CGFloat ButtonSize = 30.0;
     [animFill setRemovedOnCompletion:NO];
     [animFill setFillMode:kCAFillModeBoth];
     return animFill;
+}
+
+- (void)updateTextForSelection:(BOOL)selection {
+    _label.text = self.isSelected ? self.selectedText : self.deselectedText;
 }
 
 @end
