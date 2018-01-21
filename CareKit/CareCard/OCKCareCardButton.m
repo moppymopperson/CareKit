@@ -99,6 +99,10 @@ static const CGFloat ButtonSize = 30.0;
     [_imageView setImage: selection ? self.buttonImage : NULL];
 }
 
+- (void)updateTextForSelection:(BOOL)selection {
+    _label.text = self.isSelected ? self.selectedText : self.deselectedText;
+}
+
 - (CABasicAnimation *)animFillColorWithDur:(CGFloat)dur startCol:(UIColor *)start endColor:(UIColor *)end {
     CABasicAnimation *animFill = [CABasicAnimation animationWithKeyPath:@"fillColor"];
     [animFill setDuration:dur];
@@ -107,10 +111,6 @@ static const CGFloat ButtonSize = 30.0;
     [animFill setRemovedOnCompletion:NO];
     [animFill setFillMode:kCAFillModeBoth];
     return animFill;
-}
-
-- (void)updateTextForSelection:(BOOL)selection {
-    _label.text = self.isSelected ? self.selectedText : self.deselectedText;
 }
 
 @end
