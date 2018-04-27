@@ -35,6 +35,7 @@
 
 
 static const CGFloat ButtonSize = 30.0;
+static const CGFloat LabelOffset = 8.0;
 
 @implementation OCKCareCardButton {
     CAShapeLayer *_circleLayer;
@@ -57,22 +58,22 @@ static const CGFloat ButtonSize = 30.0;
         UIRectFill(_circleLayer.frame);
     }
     
+    if (!_label) {
+        CGRect labelRect = CGRectMake(0, ButtonSize/2 + LabelOffset, ButtonSize, ButtonSize);
+        _label = [[UILabel alloc] initWithFrame:labelRect];
+        _label.font = [UIFont systemFontOfSize:9 weight:UIFontWeightHeavy];
+        _label.textColor = self.tintColor;
+        _label.textAlignment = NSTextAlignmentCenter;
+        [self updateTextForSelection];
+        [self addSubview:_label];
+    }
+    
     if (!_imageView) {
         CGRect imageRect = CGRectMake(0, 0, ButtonSize, ButtonSize);
         _imageView = [[UIImageView alloc] initWithFrame:imageRect];
         _imageView.contentMode = UIViewContentModeScaleAspectFit;
         [self updateImageForSelection:self.isSelected];
         [self addSubview:_imageView];
-    }
-    
-    if (!_label) {
-        CGRect labelRect = CGRectMake(0, ButtonSize/2 + 8, ButtonSize, ButtonSize);
-        _label = [[UILabel alloc] initWithFrame:labelRect];
-        _label.font = [UIFont systemFontOfSize:9 weight:300];
-        _label.textColor = self.tintColor;
-        _label.textAlignment = NSTextAlignmentCenter;
-        [self updateTextForSelection:self.isSelected];
-        [self addSubview:_label];
     }
 }
 
@@ -96,12 +97,12 @@ static const CGFloat ButtonSize = 30.0;
     }
 }
 
-- (void)updateImageForSelection:(BOOL)selection {
-    [_imageView setImage: selection ? self.buttonImage : NULL];
+- (void)updateTextForSelection {
+    _label.text = self.isSelected ? self.selectedText : self.deselectedText;
 }
 
-- (void)updateTextForSelection:(BOOL)selection {
-    _label.text = self.isSelected ? self.selectedText : self.deselectedText;
+- (void)updateImageForSelection:(BOOL)selection {
+    [_imageView setImage: selection ? self.buttonImage : NULL];
 }
 
 - (CABasicAnimation *)animFillColorWithDur:(CGFloat)dur startCol:(UIColor *)start endColor:(UIColor *)end {
