@@ -57,6 +57,7 @@ static const CGFloat LabelOffset = 8.0;
         [[UIColor clearColor] setFill];
         UIRectFill(_circleLayer.frame);
     }
+    
     if (!_label) {
         CGRect labelRect = CGRectMake(0, ButtonSize/2 + LabelOffset, ButtonSize, ButtonSize);
         _label = [[UILabel alloc] initWithFrame:labelRect];
@@ -64,8 +65,8 @@ static const CGFloat LabelOffset = 8.0;
         _label.textColor = self.tintColor;
         _label.textAlignment = NSTextAlignmentCenter;
         [self updateTextForSelection];
-    }
         [self addSubview:_label];
+    }
     
     if (!_imageView) {
         CGRect imageRect = CGRectMake(0, 0, ButtonSize, ButtonSize);
