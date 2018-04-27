@@ -39,6 +39,7 @@ static const CGFloat LabelOffset = 8.0;
 
 @implementation OCKCareCardButton {
     CAShapeLayer *_circleLayer;
+    UIImageView *_imageView;
     UILabel *_label;
 }
 
@@ -66,10 +67,24 @@ static const CGFloat LabelOffset = 8.0;
     }
         [self addSubview:_label];
     
+    if (!_imageView) {
+        CGRect imageRect = CGRectMake(0, 0, ButtonSize, ButtonSize);
+        _imageView = [[UIImageView alloc] initWithFrame:imageRect];
+        _imageView.contentMode = UIViewContentModeScaleAspectFit;
+        [self updateImageForSelection:self.isSelected];
+        [self addSubview:_imageView];
+    }
+}
+
+- (void)setHighlighted:(BOOL)highlighted {
+    [self updateFillColorForSelection:highlighted];
+    [self updateImageForSelection:highlighted];
+    [super setHighlighted:highlighted];
 }
 
 - (void)setSelected:(BOOL)selected {
     [self updateFillColorForSelection:selected];
+    [self updateImageForSelection:selected];
     [super setSelected:selected];
 }
 
@@ -83,6 +98,10 @@ static const CGFloat LabelOffset = 8.0;
 
 - (void)updateTextForSelection {
     _label.text = self.isSelected ? self.selectedText : self.deselectedText;
+}
+
+- (void)updateImageForSelection:(BOOL)selection {
+    [_imageView setImage: selection ? self.buttonImage : NULL];
 }
 
 - (CABasicAnimation *)animFillColorWithDur:(CGFloat)dur startCol:(UIColor *)start endColor:(UIColor *)end {

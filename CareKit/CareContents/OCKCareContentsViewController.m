@@ -850,7 +850,6 @@
         }
         
         cell.assessmentEvent = event;
-        
         return cell;
     }
     else if (type == OCKCarePlanActivityTypeReadOnly) {
@@ -875,6 +874,7 @@
         }
 
         cell.delegate = self;
+        cell.buttonImage = _buttonImage;
         cell.interventionEvents = events;
         return cell;
     }
