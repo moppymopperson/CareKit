@@ -67,6 +67,10 @@ class BuildInsightsOperation: Operation {
             newInsights.append(insight)
         }
         
+        if let insight = createCustomChartInsight() {
+            newInsights.append(insight)
+        }
+        
         // Store any new insights thate were created.
         if !newInsights.isEmpty {
             insights = newInsights
@@ -227,6 +231,10 @@ class BuildInsightsOperation: Operation {
         }).count
      
         return Float(completedCount) / Float(events.count)
+    }
+    
+    private func createCustomChartInsight() -> OCKChart? {
+        return CustomChartInsight(color: .green)
     }
 }
 

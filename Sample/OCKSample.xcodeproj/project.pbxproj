@@ -51,6 +51,7 @@
 		BA965B281DC6D3200066EAC6 /* Glyph.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA965B271DC6D3200066EAC6 /* Glyph.swift */; };
 		BADD6DC81DC5428C008E7893 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18214FD51D3D9C8000AE765B /* InterfaceController.swift */; };
 		BADD6DCA1DC542CF008E7893 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C100D41CB1475900FAD7E8 /* RootViewController.swift */; };
+		F7639C8220ECF9C80081535E /* CustomChartInsight.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7639C8120ECF9C80081535E /* CustomChartInsight.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -229,6 +230,7 @@
 		BAFAD7A71EFB1CE3004DEC45 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Main.strings; sourceTree = "<group>"; };
 		BAFAD7A81EFB1CEE004DEC45 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Main.strings; sourceTree = "<group>"; };
 		BAFAD7A91EFB1D04004DEC45 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Main.strings; sourceTree = "<group>"; };
+		F7639C8120ECF9C80081535E /* CustomChartInsight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomChartInsight.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -414,6 +416,7 @@
 				B56848B51CB5085E00D190EE /* InsightsBuilder.swift */,
 				B5C100EA1CB2C9FE00FAD7E8 /* QueryActivityEventsOperation.swift */,
 				B5C01D511CB3BC2D000728D9 /* BuildInsightsOperation.swift */,
+				F7639C8120ECF9C80081535E /* CustomChartInsight.swift */,
 			);
 			name = Insights;
 			sourceTree = "<group>";
@@ -663,6 +666,7 @@
 				BA965B281DC6D3200066EAC6 /* Glyph.swift in Sources */,
 				B58A3FBD1CC81FF9009CF1B9 /* Mood.swift in Sources */,
 				1801613F1D4E778F0036E247 /* WatchConnectivityManager.swift in Sources */,
+				F7639C8220ECF9C80081535E /* CustomChartInsight.swift in Sources */,
 				B5C01D521CB3BC2D000728D9 /* BuildInsightsOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
