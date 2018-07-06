@@ -77,12 +77,6 @@ static const CGFloat LabelOffset = 8.0;
     }
 }
 
-- (void)setHighlighted:(BOOL)highlighted {
-    [self updateFillColorForSelection:highlighted];
-    [self updateImageForSelection:highlighted];
-    [super setHighlighted:highlighted];
-}
-
 - (void)setSelected:(BOOL)selected {
     [self updateFillColorForSelection:selected];
     [self updateImageForSelection:selected];
