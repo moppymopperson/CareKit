@@ -458,7 +458,7 @@
                                                                                           completedEvents = completedEvents + completedAssessmentEvents;
                                                                                           totalEvents = totalEvents + totalAssessmentEvents;
                                                                                           if (totalEvents == 0) {
-                                                                                              [values addObject:@(1)];
+                                                                                              [values addObject:@(0)];
                                                                                           } else {
                                                                                               [values addObject:@((float)completedEvents/totalEvents)];
                                                                                           }
@@ -513,7 +513,7 @@
                                                                                           dispatch_async(dispatch_get_main_queue(), ^{
                                                                                               for (int i = 0; i<7; i++) {
                                                                                                   if (([interventionTotal[i] floatValue] + [assessmentTotal[i] floatValue]) == 0) {
-                                                                                                      [values addObject:@(1)];
+                                                                                                      [values addObject:@(0)];
                                                                                                   } else {
                                                                                                       float completed = [interventionCompleted[i] floatValue] + [assessmentCompleted[i] floatValue];
                                                                                                       float total = [interventionTotal[i] floatValue] + [assessmentTotal[i] floatValue];
